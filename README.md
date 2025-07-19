@@ -16,16 +16,18 @@ A simple two-API system where API1 forwards requests to API2 and returns the res
 
 1. Clone this repository:
    ```bash
-   git clone <your-repository-url>
-   cd dual-api-system
+   git clone https://github.com/Nontawit-2005/Hack.git
+   cd Hack
    ```
 
-2. Build and start the services using Docker Compose:
+2. Open the Docker Desktop.
+
+3. Build and start the services using Docker Compose:
    ```bash
    docker compose up --build
    ```
 
-3. The services will be available at:
+4. The services will be available at:
    - API1: http://localhost:8001
    - API2: http://localhost:8002
 

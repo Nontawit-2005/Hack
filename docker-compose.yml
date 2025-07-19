@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  api1:
+    build:
+      context: .
+      dockerfile: Dockerfile.api1
+    ports:
+      - "8001:8001"
+    environment:
+      - PORT=8001
+      - API2_URL=http://api2:8002
+    depends_on:
+      - api2
+    networks:
+      - api-network
+
+  api2:
+    build:
+      context: .
+      dockerfile: Dockerfile.api2
+    ports:
+      - "8002:8002"
+    environment:
+      - PORT=8002
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge

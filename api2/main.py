@@ -15,15 +15,6 @@ async def health_check():
         "timestamp": datetime.now().isoformat()
     }
 
-@app.get("/hello")
-async def hello_from_api2():
-    print(f"[API2] Received request at /hello - {datetime.now().isoformat()}")
-    return {
-        "from": "API2",
-        "message": "Hello World",
-        "timestamp": datetime.now().isoformat()
-    }
-
 @app.get("/api/process")
 async def process_request():
     print("[API2] Received request from API1")

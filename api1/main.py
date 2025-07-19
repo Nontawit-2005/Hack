@@ -17,21 +17,6 @@ async def health_check():
         "timestamp": datetime.now().isoformat()
     }
 
-@app.get("/hello")
-async def hello_from_api1():
-    print(f"[API1] Received request at /hello - {datetime.now().isoformat()}")
-    try:
-        async with httpx.AsyncClient() as client:
-            print(f"[API1] Forwarding request to API2...")
-            response = await client.get(f"{API2_URL}/hello")
-            response.raise_for_status()
-            data = response.json()
-            print(f"[API1] Received from API2: {data}")
-            return {"from": "API1", "api2_response": data}
-    except Exception as e:
-        print(f"[API1] Error contacting API2: {str(e)}")
-        raise HTTPException(status_code=500, detail="Failed to contact API2")
-
 @app.get("/api/message")
 async def get_message():
     try:
